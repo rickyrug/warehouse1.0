@@ -12,10 +12,16 @@ if ($action == 'add') {
 <script>
  $(document).ready(function () {
       $('button').click(
-       function(){
-           
-          console.log($('button').parents('form'));
-           //hola comom
+       function(e){
+       e.preventDefault();
+//       var form   =  $('button').parents('div form table tbody').first();
+         var td   =  $('button').parent().first();
+         var trbtn   = td.parent();
+         trbtn.siblings().each(function()
+         {
+             console.log($(this).find('input').val())
+             
+         });                 
        }       
        );
     });
@@ -93,9 +99,9 @@ if ($action == 'add') {
                           echo ' <tr>
                                     <td><h5>'.$characteristic->description.'</h5></td>
                                     <td><a href="#" data-reveal-id="p'.$characteristic->idcharacteristic.'">Add Values</a>';
-                              echo'<div id="p'.$characteristic->idcharacteristic.'" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                                  '.form_open('configuration/ProductPropertiesValues/add',array('class' => 'valueForm', 'id' => 'valueForm')).'
-                                    <table>
+                              echo'<div id="p'.$characteristic->idcharacteristic.'" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">';
+                              echo form_open('configuration/ProductPropertiesValues/add',array('class' => 'valueForm'.$characteristic->idcharacteristic, 'id' => 'valueForm'.$characteristic->idcharacteristic));
+                              echo'<table>
                                      <thead>
                                       <tr>
                                         <th>Nombre</th>
@@ -104,8 +110,8 @@ if ($action == 'add') {
                                      </thead>
                                      <tbody>
                                      <tr>
-                                        <td><input type="text" name="nombre" value="" id="nombre"/></td>
-                                        <td><input type="text" name="valor" value=""  id="valor"/></td>
+                                        <td><input type="text" name="nombre" value="" class="nombre"/></td>
+                                        <td><input type="text" name="valor" value=""  class="valor"/></td>
                                      </tr>
                                      
                                      <tr>
