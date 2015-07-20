@@ -15,7 +15,7 @@ if ($action == 'add') {
        function(){
            
           console.log($('button').parents('form'));
-           
+           //hola
        }       
        );
     });
