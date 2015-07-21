@@ -16,10 +16,10 @@ if ($action == 'add') {
        event.preventDefault();
        var form   =  $('button').parents('div form').first();
        var posting = $.post( form.attr('action'), form.serialize());
-           console.log(form.serialize());
+//           console.log(form.serialize());
                     posting.done(function (data) {
                         var content = data.respuesta;
-                        console.log(data);
+//                        console.log(data);
                         $("#result").append(content);
                     });
                 }
