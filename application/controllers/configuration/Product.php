@@ -86,7 +86,7 @@ class Product extends CI_Controller {
             
             $var_product = $this->Product_Model->find_by_code($var_product_code, 'idproduct');
             
-//            $this->add_product_characteritics($var_product[0]->idproduct, $properties_skeleton);
+            $this->add_product_characteritics($var_product[0]->idproduct, $properties_skeleton);
             
             $data['idproduct'] = $var_product[0]->idproduct;
             $this->load->view('general/header');
