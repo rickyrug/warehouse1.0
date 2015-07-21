@@ -15,9 +15,13 @@ class ProductPropertiesValues extends CI_Controller{
    
     public function index() {}
      public function add() {
-         echo $_POST['nombre'];
+        
          $nombre = $_POST['nombre'];
-         echo $nombre;
+         $valor  = $_POST['valor'];
+         $idproduct = $_POST['idproduct'];
+         $idcharacteristic = $_POST['idcharacteristic'];
+        echo json_encode(array('nombre'=>$nombre,'valor'=>$valor,
+                         'idproduct'=>$idproduct,'idcharacteristic'=>$idcharacteristic));
      }
      public function delete($p_ProductPropertiesValuess) {}
      public function edit($p_ProductPropertiesValues) {}
