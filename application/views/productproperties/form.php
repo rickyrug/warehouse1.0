@@ -12,16 +12,15 @@ if ($action == 'add') {
 <script>
  $(document).ready(function () {
       $('button').click(
-       function(e){
-       e.preventDefault();
-//       var form   =  $('button').parents('div form table tbody').first();
-         var td   =  $('button').parent().first();
-         var trbtn   = td.parent();
-         trbtn.siblings().each(function()
-         {
-             console.log($(this).find('input').val())
-             
-         });                 
+       function(event){
+       event.preventDefault();
+       var form   =  $('button').parents('div form').first();
+       var posting = $.post( form.attr('action'), form.serialize());
+//         var td   =  $('button').parent().first();
+//         var trbtn   = td.parent();
+//         var trinputs = trbtn.siblings();
+//         var tdinput  = trinputs.children();
+        console.log(posting);  
        }       
        );
     });
