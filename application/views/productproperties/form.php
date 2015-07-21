@@ -16,13 +16,14 @@ if ($action == 'add') {
        event.preventDefault();
        var form   =  $('button').parents('div form').first();
        var posting = $.post( form.attr('action'), form.serialize());
-//         var td   =  $('button').parent().first();
-//         var trbtn   = td.parent();
-//         var trinputs = trbtn.siblings();
-//         var tdinput  = trinputs.children();
-        console.log(posting);  
-       }       
-       );
+           console.log(form.serialize());
+                    posting.done(function (data) {
+                        var content = data.respuesta;
+                        console.log(data);
+                        $("#result").append(content);
+                    });
+                }
+        );
     });
 </script>
 <table>
@@ -99,6 +100,7 @@ if ($action == 'add') {
                                     <td><h5>'.$characteristic->description.'</h5></td>
                                     <td><a href="#" data-reveal-id="p'.$characteristic->idcharacteristic.'">Add Values</a>';
                               echo'<div id="p'.$characteristic->idcharacteristic.'" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">';
+                              echo '<span id="result"></span>';
                               echo form_open('configuration/ProductPropertiesValues/add',array('class' => 'valueForm'.$characteristic->idcharacteristic, 'id' => 'valueForm'.$characteristic->idcharacteristic));
                               echo'<table>
                                      <thead>
@@ -109,6 +111,8 @@ if ($action == 'add') {
                                      </thead>
                                      <tbody>
                                      <tr>
+                                        <input type="hidden" name="idproduct" value="'.$idproduct.'" />
+                                        <input type="hidden" name="idcharacteristic" value="'.$characteristic->idcharacteristic.'" />
                                         <td><input type="text" name="nombre" value="" class="nombre"/></td>
                                         <td><input type="text" name="valor" value=""  class="valor"/></td>
                                      </tr>
