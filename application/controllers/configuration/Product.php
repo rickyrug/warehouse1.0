@@ -88,7 +88,7 @@ class Product extends CI_Controller {
             
 //            $this->add_product_characteritics($var_product[0]->idproduct, $properties_skeleton);
             
-            
+            $data['idproduct'] = $var_product[0]->idproduct;
             $this->load->view('general/header');
             $this->load->view('general/product/productprogressconfiguration',$data);
             $this->load->view('productproperties/form',$data);
